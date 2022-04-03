@@ -2,6 +2,16 @@ from bs4 import BeautifulSoup
 from datetime import date
 import requests
 import time
+import os
+
+def criarPasta(diretorio):
+    try:
+        if not os.path.exists(diretorio):  # se o caminho do diretório não existir
+            os.makedirs(diretorio) # criar diretório
+    except OSError: # caso ocorra um erro ao criar
+        print ('Houve um erro ao criar o diretório: ' +  diretorio) # mostrando ao usuario que houve um erro
+        
+criarPasta('./noticias/') # criar o diretorio
 
 def noticiasdodia(): #função para coleta e registro de notícias
     hoje = str(date.today()) #acesso a data atual para registro posterior
